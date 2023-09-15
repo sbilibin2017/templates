@@ -1,9 +1,10 @@
 from uuid import UUID
 from pydantic import BaseModel
 from repositories.movie import MovieRepository
+from interfaces.service import GenericServiceProtocol
 import http
 
-class MovieService:
+class MovieService(GenericServiceProtocol):
     def __init__(self, movie_repository: MovieRepository, schema) -> None:
         self.movie_repository=movie_repository
 
@@ -21,6 +22,11 @@ class MovieService:
                 data = None,
                 status=http.HTTPStatus.NOT_FOUND
             )
+    async def _make_onew_response(self):
+        pass
+    
+    async def _make_may_response(self):
+        pass
             
             
 

@@ -1,7 +1,7 @@
 from abc import ABC
-from typing import Type
+from typing import Protocol, Type, TypeVar
 
-from interfaces.repository.generic import GenericRepositoryABC
+from interfaces.repositories.db import GenericDBRepositoryProtocol
 
 T = TypeVar("T")
 
@@ -9,10 +9,10 @@ T = TypeVar("T")
 from uuid import UUID
 
 
-class GenericDBRepository(GenericRepositoryABC[T], ABC):
+class GenericDBRepository(GenericDBRepositoryProtocol[T]):
     def __init__(self, db, model_cls: Type[T]) -> None:
-        self._session = session
-        self._model_cls = model_cls
+        self.db = db
+        self.model_cls = model_cls
 
     async def add(self, record: T) -> T:
         pass

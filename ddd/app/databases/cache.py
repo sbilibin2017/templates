@@ -3,7 +3,7 @@ import logging
 from contextlib import AbstractAsyncContextManager, asynccontextmanager
 from typing import Callable
 
-from interfaces.storage import StorageABC
+from interfaces.storage import StorageProtocol
 from redis.asyncio import Redis
 
 
@@ -11,7 +11,7 @@ class CacheConnectionError(Exception):
     "Raises exception if cache is not responding."
 
 
-class Cache(StorageABC):
+class Cache(StorageProtocol):
     def __init__(self, host: str, port: int, db: int, logger: logging.Logger):
         self.host = host
         self.port = port

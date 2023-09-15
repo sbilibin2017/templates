@@ -1,8 +1,6 @@
-import abc
+from typing import Protocol
 
 
-class StorageABC(abc.ABC):
-    abc.abstractmethod
-
+class StorageProtocol(Protocol):
     def session(self):
         pass

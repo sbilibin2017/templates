@@ -1,7 +1,7 @@
 from abc import ABC
-from typing import Type
+from typing import Type, TypeVar
 
-from interfaces.repository.cache import CacheRepositoryABC
+from interfaces.repository.cache import CacheRepositoryProtocol
 
 T = TypeVar("T")
 
@@ -9,7 +9,7 @@ T = TypeVar("T")
 from uuid import UUID
 
 
-class CacheRepository(CacheRepositoryABC):
+class CacheRepository(CacheRepositoryProtocol):
     def __init__(self, cache) -> None:
         pass
 

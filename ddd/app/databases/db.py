@@ -4,14 +4,14 @@ from contextlib import AbstractAsyncContextManager, asynccontextmanager
 from typing import Callable
 
 from elasticsearch import AsyncElasticsearch
-from interfaces.storage import StorageABC
+from interfaces.storage import StorageProtocol
 
 
 class DatabaseConnectionError(Exception):
     "Raises exception if database is not responding."
 
 
-class Database(StorageABC):
+class Database(StorageProtocol):
     def __init__(self, host: str, port: int, logger: logging.Logger):
         self.host = host
         self.port = port
